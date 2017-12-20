@@ -1,32 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Source: site.js</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Source: site.js</h1>
-
-    
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/** Main Class */
+/** Main Class */
 class Pikcells
 {
 	/**
@@ -194,8 +166,8 @@ class Pikcells
 		// Sets up listener for if the window is resized
 		$(window).resize(() => {
 			let width = 0;
-			if($(window).width() &lt; 600) width = $('.project-gallery').width() / 2;
-			else if($(window).width() > 600 &amp;&amp; $(window).width() &lt; 1024) width = $('.project-gallery').width() / 5;
+			if($(window).width() < 600) width = $('.project-gallery').width() / 2;
+			else if($(window).width() > 600 && $(window).width() < 1024) width = $('.project-gallery').width() / 5;
 			else width = $('.project-gallery').width() / 8;
 
 			this.ProjectHeight  = $(window).height() / 4 * 3;
@@ -349,7 +321,7 @@ class Studio
 		});
 
 		$('.job__post a').each(function() {
-			$(this).wrapInner('&lt;span>&lt;/span>');
+			$(this).wrapInner('<span></span>');
 		});
 
 		// If a filter is clicked, scroll to the relevant section
@@ -724,7 +696,7 @@ class Culture
 		$.ajax({
 			type: 'GET',
 			url: '/wp-admin/admin-ajax.php',
-			data: 'action=load_more&amp;post_date=' + $('.panel:last').data('postDate') + '&amp;max_id=' + $('.panel.tweet:last').data('postId'),
+			data: 'action=load_more&post_date=' + $('.panel:last').data('postDate') + '&max_id=' + $('.panel.tweet:last').data('postId'),
 			error: function(xhr, err) {
 				console.log('Sample of error data: ', err);
 
@@ -959,7 +931,7 @@ class SinglePortfolio
 				$(".pp_nav").width($(window).width());
 				$(".pp_details").removeClass('hide');
 
-				if ($(".pp_description").text().length &lt; 1) {
+				if ($(".pp_description").text().length < 1) {
 					$(".pp_content").height($(".pp_content").height() - 36);
 				}
 			}
@@ -991,7 +963,7 @@ class SinglePortfolio
 				self.initAnimatedImages();
 
 				$(".pp_details").removeClass('hide');
-				if ($(".pp_description").text().length &lt; 1) {
+				if ($(".pp_description").text().length < 1) {
 					$(".pp_content").height($(".pp_content").height() - 36);
 				}
 			}
@@ -1326,16 +1298,16 @@ class Lightbox
 		/** @type {Array} */
 		this.images = images;
 		/** @type {String} */
-		this.html = '&lt;div class="modal fade bs-example-modal-lg carousel-modal-dad" tabindex="-1" role="dialog" id="modal-' + id + '">\
-									&lt;div class="modal-dialog modal-lg">\
-										&lt;div class="modal-content">&lt;div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">\
-											&lt;ol class="carousel-indicators">&lt;/ol>\
-											&lt;div class="carousel-inner">&lt;/div>\
-											&lt;a class="glyphicon glyphicon-chevron-left left changeCarousel-left" data-slide="prev" href="#myCarousel">&lt;/a>\
-											&lt;a class="glyphicon glyphicon-chevron-right right changeCarousel-right" data-slide="next" href="#myCarousel">&lt;/a>\
-										&lt;/div>\
-									&lt;/div>\
-								&lt;/div>';
+		this.html = '<div class="modal fade bs-example-modal-lg carousel-modal-dad" tabindex="-1" role="dialog" id="modal-' + id + '">\
+									<div class="modal-dialog modal-lg">\
+										<div class="modal-content"><div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">\
+											<ol class="carousel-indicators"></ol>\
+											<div class="carousel-inner"></div>\
+											<a class="glyphicon glyphicon-chevron-left left changeCarousel-left" data-slide="prev" href="#myCarousel"></a>\
+											<a class="glyphicon glyphicon-chevron-right right changeCarousel-right" data-slide="next" href="#myCarousel"></a>\
+										</div>\
+									</div>\
+								</div>';
 	}
 	/**
 	 * @method getimageCount
@@ -1389,10 +1361,10 @@ class Lightbox
 		let count = 0;
 		images.forEach((image) => {
 			const indicator = count == 0  ? 'active' : '';
-			$('.carousel-indicators', html).append('&lt;li data-target="#myCarousel" data-slide-to="' + count + '" class="' + indicator + '">&lt;/li>');
+			$('.carousel-indicators', html).append('<li data-target="#myCarousel" data-slide-to="' + count + '" class="' + indicator + '"></li>');
 			const classes = count == 0 ? 'item active' : 'item';
-			const inner = image.indexOf('.mp4') != -1 ? '&lt;video src="' + image + '" controls>&lt;/video>' : '&lt;img src="' + image + '">';
-			$('.carousel-inner', html).append('&lt;div class=" ' + classes + '">' + inner);
+			const inner = image.indexOf('.mp4') != -1 ? '<video src="' + image + '" controls></video>' : '<img src="' + image + '">';
+			$('.carousel-inner', html).append('<div class=" ' + classes + '">' + inner);
 			count++;
 		});
 		this.html = html;
@@ -1490,26 +1462,3 @@ $(function() {
 			break;
 	}
 })
-</code></pre>
-        </article>
-    </section>
-
-
-
-
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Culture.html">Culture</a></li><li><a href="Lab.html">Lab</a></li><li><a href="Lightbox.html">Lightbox</a></li><li><a href="Pikcells.html">Pikcells</a></li><li><a href="Portfolio.html">Portfolio</a></li><li><a href="SingleBlog.html">SingleBlog</a></li><li><a href="SingleLab.html">SingleLab</a></li><li><a href="SinglePortfolio.html">SinglePortfolio</a></li><li><a href="Studio.html">Studio</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Dec 20 2017 12:10:11 GMT+0000 (GMT Standard Time)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
-</body>
-</html>
