@@ -1,4 +1,11 @@
-/** Main Class */
+/** Main Class
+	* # Main class
+	*
+	* ## Getters
+	* Class properties are fetched functionless, simply by calling this.property.
+	* ## Setters
+	* Class properties are set functionless, simply by calling this.property = value, without the _ preceding each property.
+*/
 class Pikcells
 {
 	/**
@@ -9,15 +16,30 @@ class Pikcells
 	 * @author Nathan Leadill
 	 */
 	constructor() {
-		/** @type {Boolean} */
+		/**
+		 * Boolean stating if the active device is a mobile device
+		 * @type {Boolean}
+		 */
 		this._isMobile          = false;
-		/** @type {Number} */
+		/**
+		 * Variable stating the width of the window
+		 * @type {[type]}
+		 */
 		this._homepageWidth     = $(window).width();
-		/** @type {Number} */
+		/**
+		 * Variable stating the height of the window minus the height of the header
+		 * @type {[type]}
+		 */
 		this._homepageHeight    = $(window).height() - $('.site-header').innerHeight() - 8;
-		/** @type {Number} */
+		/**
+		 * Variable stating the width of the window
+		 * @type {[type]}
+		 */
 		this._projectWidth      = $(window).width();
-		/** @type {Number} */
+		/**
+		 * Variable stating 3/4 of the window height
+		 * @type {[type]}
+		 */
 		this._projectHeight     = $(window).height() / 4 * 3;
 
 
@@ -90,6 +112,9 @@ class Pikcells
 	 * @description Sets whether the website is running on a mobile
 	 * @author Nathan Leadill
 	 * @param {Boolean} isMob Is the device a mobile device or not?
+	 *
+	 * @example
+	 * this.projectHeight = value;
 	 */
 	set isMobile (isMob) {
 		this._isMobile = isMob;
@@ -101,6 +126,9 @@ class Pikcells
 	 * @description Sets the local homepageWidth variable
 	 * @author Nathan Leadill
 	 * @param {Integer} hw The width of the homepage(browser)
+	 *
+	 * @example
+	 * this.homepageWidth = value;
 	 */
 	set homepageWidth (hw) {
 		this._homepageWidth = hw;
@@ -112,6 +140,9 @@ class Pikcells
 	 * @description Sets the local homepageHeight variable
 	 * @author Nathan Leadill
 	 * @param {Integer} hh The height of the homepage(browser)
+	 *
+	 * @example
+	 * this.homepageHeight = value;
 	 */
 	set homepageHeight (hh) {
 		this._homepageHeight = hh;
@@ -123,6 +154,9 @@ class Pikcells
 	 * @description Sets the local projectWidth variable
 	 * @author Nathan Leadill
 	 * @param {Integer} pw
+	 *
+	 * @example
+	 * this.projectWidth = value;
 	 */
 	set projectWidth (pw) {
 		this._projectWidth = pw;
