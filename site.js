@@ -1,4 +1,4 @@
-/** Main Class
+/**
 	* # Main class
 	*
 	* ## Getters
