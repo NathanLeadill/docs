@@ -149,7 +149,7 @@ class Pikcells
 	 * @author Nathan Leadill
 	 *
 	 * @playground
-	 * let UA = navigator.userAgent;
+	 * const UA = '5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1';
 	 * if(UA.match(/Android/) || UA.match(/iPhone/) || UA.match(/BlackBerry/) || UA.match(/iPod/) || UA.match(/Windows Phone/) || UA.match(/webOS/)) {
 	 * 	console.log('You are on mobile');
 	 * }
