@@ -89,7 +89,7 @@ class Pikcells
 	 * @memberof Pikcells
 	 * @description Sets whether the website is running on a mobile
 	 * @author Nathan Leadill
-	 * @param {Boolean} isMob
+	 * @param {Boolean} isMob Is the device a mobile device or not?
 	 */
 	set isMobile (isMob) {
 		this._isMobile = isMob;
@@ -100,7 +100,7 @@ class Pikcells
 	 * @memberof Pikcells
 	 * @description Sets the local homepageWidth variable
 	 * @author Nathan Leadill
-	 * @param {Integer} hw
+	 * @param {Integer} hw The width of the homepage(browser)
 	 */
 	set homepageWidth (hw) {
 		this._homepageWidth = hw;
@@ -111,7 +111,7 @@ class Pikcells
 	 * @memberof Pikcells
 	 * @description Sets the local homepageHeight variable
 	 * @author Nathan Leadill
-	 * @param {Integer} hh
+	 * @param {Integer} hh The height of the homepage(browser)
 	 */
 	set homepageHeight (hh) {
 		this._homepageHeight = hh;
@@ -149,6 +149,7 @@ class Pikcells
 	 * @author Nathan Leadill
 	 *
 	 * @playground
+	 * // The UA is set to an iPhone you can edit this yourself to try it out.
 	 * const UA = '5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1';
 	 * if(UA.match(/Android/) || UA.match(/iPhone/) || UA.match(/BlackBerry/) || UA.match(/iPod/) || UA.match(/Windows Phone/) || UA.match(/webOS/)) {
 	 * 	console.log('You are on mobile');
@@ -1286,6 +1287,11 @@ class SingleBlog
 /**
  * Custom Lightbox Plugin
  * @author Nathan Leadill
+ *
+ * @example
+ *
+ * let light = new Lightbox(['image1.png', 'image2.png', 'image3.png'], '1');
+ * light.modal();
  */
 class Lightbox
 {
