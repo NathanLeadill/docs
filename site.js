@@ -870,7 +870,7 @@ class SinglePortfolio
 	/**
 	 * @method getisVideo
 	 * @memberof SinglePortfolio
-	 * @description Returns the isVideo value
+	 * @description Return the isVideo value
 	 * @author Nathan Leadill
 	 * @return {Boolean} is the item a video
 	 */
@@ -999,7 +999,7 @@ class SinglePortfolio
 	/**
 	* @method setupListeners
 	* @memberof SinglePortfolio
-	* @description Sets up listeners for the class
+	* @description Sets up listeners
 	* @author Nathan Leadill
 	*/
 	setupListeners () {
@@ -1311,13 +1311,26 @@ class Lightbox
 	* @param {Number} id Id of the design and development item
 	*/
 	constructor (images, id) {
-		/** @type {Number} */
+		/**
+		 * Number of images in the image array
+		 * @type {Number}
+		 */
 		this.imageCount = 0;
-		/** @type {Number} */
+		/**
+		 * Delay in the carousel
+		 * @type {Number}
+		 */
 		this.delay = 3000;
-		/** @type {Array} */
+		/**
+		 * Array of images
+		 * @type {Array}
+		 */
 		this.images = images;
-		/** @type {String} */
+		/**
+		 * Lightbox HTML. Initialises with default template html for us to insert html into.
+		 * @type {String}
+		 * @default
+		 */
 		this.html = '<div class="modal fade bs-example-modal-lg carousel-modal-dad" tabindex="-1" role="dialog" id="modal-' + id + '">\
 									<div class="modal-dialog modal-lg">\
 										<div class="modal-content"><div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">\
