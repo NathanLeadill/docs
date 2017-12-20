@@ -665,9 +665,9 @@ class Culture
 	 * @method setupListeners
 	 * @memberof Culture
 	 * @description Creates listeners for the page.
-	 * 
+	 *
 	 * # Listeners
-	 * - window.resize
+	 * - $(window).resize
 	 * - $('.js-trigger-load').click
 	 * - $('.culture-grid .culture a').click
 	 * - $('.sub__nav a').click
@@ -712,7 +712,7 @@ class Culture
 	/**
 	 * @method loadContent
 	 * @memberof Culture
-	 * @description Makes an AJAX cal to get the posts
+	 * @description Makes an AJAX GET request to the backend requesting social media posts.
 	 * @author Nathan Leadill
 	 */
 	loadContent () {
@@ -732,6 +732,7 @@ class Culture
 			success: function(data, status) {
 				var self = this;
 				$('.panel__grid').imagesLoaded(function () {
+					// Parsed HTML returned from the ajax request
 					const rawHtml = $($.parseHTML(data));
 					if(rawHtml.length === 0) {
 						$('.epsilon.load-more').stop().animate({
@@ -1232,7 +1233,7 @@ class SinglePortfolio
 	*/
 	onPause () {
 		$('header.project-details').fadeOut(500);
-		$('.project-slider').rhinoslider().pause();
+		$('.project-slider').rhinoslider().play();
 	}
 }
 /** Handles JavaScript for SingleLab page */
@@ -1245,7 +1246,10 @@ class SingleLab
 	* @author Nathan Leadill
 	*/
 	constructor () {
-		/** @type {SingleBlog} */
+		/**
+		 * Local instance of the SingleBlog class
+		 * @type {SingleBlog}
+		 */
 		this.blog = new SingleBlog();
 		$('.shortcode_iframe').next().next().remove();
 	}
@@ -1260,11 +1264,15 @@ class SingleBlog
 	* @author Nathan Leadill
 	*/
 	constructor () {
-		/** @type {String} */
-		this.status = $('.status');
-		/** @type {Pikcells} */
+		/**
+		 * Local instance of the Pikcells class
+		 * @type {Pikcells}
+		 */
 		this.pikcells = new Pikcells();
-		/** @type {jQuery} */
+		/**
+		 * jQuery object of the frame.
+		 * @type {[type]}
+		 */
 		let frame = $('.blog-content iframe');
 		console.log(frame);
 		if(frame.length > 0) {
@@ -1324,7 +1332,7 @@ class Lightbox
 		 */
 		this.imageCount = 0;
 		/**
-		 * Delay in the carousel
+		 * Delay in the carousel before the next image shows
 		 * @type {Number}
 		 */
 		this.delay = 3000;
