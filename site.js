@@ -665,10 +665,13 @@ class Culture
 	 * @method setupListeners
 	 * @memberof Culture
 	 * @description Creates listeners for the page.
-	 *              - window.resize
-	 *              - $('.js-trigger-load').click
-	 *              - $('.culture-grid .culture a').click
-	 *              - $('.sub__nav a').click
+	 * 
+	 * # Listeners
+	 * - window.resize
+	 * - $('.js-trigger-load').click
+	 * - $('.culture-grid .culture a').click
+	 * - $('.sub__nav a').click
+	 *
 	 * @author Nathan Leadill
 	 */
 	setupListeners () {
