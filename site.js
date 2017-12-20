@@ -664,7 +664,11 @@ class Culture
 	/**
 	 * @method setupListeners
 	 * @memberof Culture
-	 * @description Sets up listeners
+	 * @description Creates listeners for the page.
+	 *              - window.resize
+	 *              - $('.js-trigger-load').click
+	 *              - $('.culture-grid .culture a').click
+	 *              - $('.sub__nav a').click
 	 * @author Nathan Leadill
 	 */
 	setupListeners () {
@@ -798,11 +802,11 @@ class Lab
 	/**
 	 * @method constructor
 	 * @memberof Lab
-	 * @description First function to be called when class is Initialised
+	 * @description Sets up the isotope grid containing all the lab items.
 	 * @author Nathan Leadill
 	 */
 	constructor() {
-		let culture = $('.panel__grid').isotope({
+		let lab = $('.panel__grid').isotope({
 			itemSelector: '.panel',
 			transformsEnabled: false,
 			masonary: {
@@ -816,7 +820,7 @@ class Lab
 	/**
 	 * @method setupListeners
 	 * @memberof Lab
-	 * @description Sets up listeners
+	 * @description Creates listeners for window.resize and $('.sub__link').click
 	 * @author Nathan Leadill
 	 */
 	setupListeners () {
@@ -842,7 +846,7 @@ class SinglePortfolio
 	/**
 	* @method constructor
 	* @memberof SinglePortfolio
-	* @description Called upon the class instantiation
+	* @description Creates local instance of Pikcells class and then calls the required functions to setup the portfolio page.
 	* @author Nathan Leadill
 	*/
 	constructor () {
