@@ -1289,9 +1289,16 @@ class SingleBlog
  * @author Nathan Leadill
  *
  * @example
- *
- * let light = new Lightbox(['image1.png', 'image2.png', 'image3.png'], '1');
- * light.modal();
+ * // Create an instance of the lightbox class.
+ * let light = new Lightbox(images, id);
+ * // Call the setup images function to fetch the images and place them into the DOM.
+ * light.setupImages();
+ * // Transfer the lightbox from virtual dom to the real dom.
+ * $('body').append(light.html);
+ * // Open the lightbox.
+ * $('#modal-' + id).modal();
+ * // Start the image cycle.
+ * light.startCycle();;
  */
 class Lightbox
 {
