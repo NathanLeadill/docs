@@ -295,7 +295,8 @@ class Studio
 	 * @author Nathan Leadill
 	 */
 	constructor () {
-		/** @type {Pikcells} */
+		/** instance of the Pikcells class
+		 *  @type {Pikcells} */
 		this.pikcells = new Pikcells();
 		this.initMap();
 		this.initStudioSlider();
@@ -569,6 +570,14 @@ class Studio
 	 * @description Scrolls the page to the respective section
 	 * @author Nathan Leadill
 	 * @param {String} target 'data-name' of the section we wish to scroll the page to
+	 *
+	 * @example
+	 * // Create a new instance of the Studio class
+	 * let studio = new Studio();
+	 * // Call the function (replace sectionName with your required target as shown below)
+	 * studio.scrollToSection(sectionName);
+	 * // Scroll the page to the clients section
+	 * studio.scrollToSection('clients');
 	 */
 	scrollToSection (target) {
 		target = target.slice(1, target.length);
@@ -1003,7 +1012,7 @@ class SinglePortfolio
 		});
 		$('.thumb__gallery').on('click', 'li', function()
 		{
-			var index = $(this).index();
+			let index = $(this).index();
 			$('.thumb__gallery').find('.active').removeClass('active');
 			$(this).addClass('active');
 			$('.rhino-bullets li:eq(' + index + ') a').trigger("click");
@@ -1023,8 +1032,8 @@ class SinglePortfolio
 			e.preventDefault();
 			let t = e.target;
 			$(t).uniqueId();
-			let id = $(t)[0].id;
-			let images = $(t).data('images').split(',');
+			const id = $(t)[0].id;
+			const images = $(t).data('images').split(',');
 
 			let light = new Lightbox(images, id);
 			light.setupImages();
@@ -1284,6 +1293,7 @@ class SingleBlog
 		}
 	}
 }
+
 /**
  * Custom Lightbox Plugin
  * @author Nathan Leadill
