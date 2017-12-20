@@ -1,10 +1,10 @@
 /**
 	* # Main class
-	*
+	* The Pikcells class handles the homepage of www.pikcells.com, and also various global properties such as isMobile.
 	* ## Getters
-	* Class properties are fetched functionless, simply by calling this.property.
+	* Class properties are fetched functionless, simply by calling `this.property`.
 	* ## Setters
-	* Class properties are set functionless, simply by calling this.property = value, without the _ preceding each property.
+	* Class properties are set functionless, simply by calling `this.property = value`, without the _ preceding each property.
 */
 class Pikcells
 {
