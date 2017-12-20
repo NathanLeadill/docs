@@ -227,7 +227,7 @@ class Portfolio
 	/**
 	 * @method constructor
 	 * @memberof Portfolio
-	 * @description First function to be called when class is Initialised
+	 * @description Creates the isotop grid containing each of the portfolio items.
 	 * @author Nathan Leadill
 	 */
 	constructor () {
@@ -295,8 +295,9 @@ class Studio
 	 * @author Nathan Leadill
 	 */
 	constructor () {
-		/** instance of the Pikcells class
-		 *  @type {Pikcells} */
+		/** Local instance of the Pikcells Class
+		 *  @type {Pikcells}
+		 */
 		this.pikcells = new Pikcells();
 		this.initMap();
 		this.initStudioSlider();
@@ -639,7 +640,10 @@ class Culture
 	 * @author Nathan Leadill
 	 */
 	constructor () {
-		/** @type {Pikcells} */
+		/**
+		 * Local instnace of the Pikcells class.
+		 * @type {Pikcells}
+		 */
 		this.pikcells = new Pikcells();
 		/** @type {String} */
 		this.culture  = "";
@@ -843,12 +847,17 @@ class SinglePortfolio
 	*/
 	constructor () {
 		let width = $('.thumb__gallery li:first-child').width();
-		/** @type {Pikcells} */
+		/**
+		 * Local instance of the Pikcells class.
+		 * @type {Pikcells}
+		 */
 		this.pikcells = new Pikcells();
-		/** @type {Boolean} */
+		/**
+		 * Class Boolean to check if there is a video.
+		 * @type {Boolean}
+		 */
 		this.isVideo = false;
 		this.initProjectSlider();
-		this.initGallery();
 		this.initAnimatedImages();
 		this.portfolioSwipe();
 		if(!this.pikcells.isMobile) this.setupPortfolio();
@@ -861,7 +870,7 @@ class SinglePortfolio
 	/**
 	 * @method getisVideo
 	 * @memberof SinglePortfolio
-	 * @description Return the isVideo value
+	 * @description Returns the isVideo value
 	 * @author Nathan Leadill
 	 * @return {Boolean} is the item a video
 	 */
@@ -990,7 +999,7 @@ class SinglePortfolio
 	/**
 	* @method setupListeners
 	* @memberof SinglePortfolio
-	* @description Sets up listeners
+	* @description Sets up listeners for the class
 	* @author Nathan Leadill
 	*/
 	setupListeners () {
@@ -1101,29 +1110,11 @@ class SinglePortfolio
 
 	}
 
-	/**
-	* @method initGallery
-	* @memberof SinglePortfolio
-	* @description Ensures the gallery is initialised with isotope layout
-	* @author Nathan Leadill
-	*/
-	initGallery () {
-		$('.project-gallery').imagesLoaded(function () {
-			$('.project-gallery').isotope({
-				resizable: true,
-				transformsEnabled: false,
-				masonary: {
-					itemSelector: '.process-image',
-					columnWidth: 300
-				}
-			});
-		});
-	}
 
 	/**
 	 * @method      initAnimatedImages
 	 * @memberof SinglePortfolio
-	 * @description Initialises the slideshow
+	 * @description Intialises the portfolio slider setting all the relevant options and settings.
 	 * @author Nathan Leadill
 	 */
 	initAnimatedImages () {
@@ -1186,7 +1177,7 @@ class SinglePortfolio
 	/**
 	* @method detectVideo
 	* @memberof SinglePortfolio
-	* @description detects if a video is present in the slider
+	* @description Detects if there is a video present in the portfolio slider, if one is present we add listeners for the video player so we can stop the image cycle when the video is played and restart it again when it is stopped.
 	* @author Nathan Leadill
 	*/
 	detectVideo () {
@@ -1206,20 +1197,19 @@ class SinglePortfolio
 	/**
 	* @method doGalleryChange
 	* @memberof SinglePortfolio
-	* @description Changes the active image in the gallery
+	* @description When an indicator is clicked this function gets the index of the clicked item and sets the active image accordingly.
 	* @author Nathan Leadill
 	*/
 	doGalleryChange () {
 		$('.thumb__gallery').find('.active').removeClass('active');
 		let index = $('.rhino-active-bullet').parent().index();
 		$('.thumb__gallery li:eq(' + index + ')').addClass('active');
-
 	}
 
 	/**
 	* @method onPlay
 	* @memberof SinglePortfolio
-	* @description When the video is played
+	* @description Handles the onPlay event for videos in the portfolio slider
 	* @author Nathan Leadill
 	*/
 	onPlay () {
@@ -1230,7 +1220,7 @@ class SinglePortfolio
 	/**
 	* @method onPause
 	* @memberof SinglePortfolio
-	* @description When the video is paused
+	* @description Handles the onPause event for videos in the portfolio slider
 	* @author Nathan Leadill
 	*/
 	onPause () {
@@ -1283,7 +1273,7 @@ class SingleBlog
 	/**
 	 * @method stringLinks
 	 * @memberof SingleBlog
-	 * @description Makes links into strings
+	 * @description When on mobile we want to convert links allowing the user to move back and forward into previous and next because of the screen size.
 	 * @author Nathan Leadill
 	 */
 	stringLinks () {
@@ -1340,6 +1330,37 @@ class Lightbox
 								</div>';
 	}
 	/**
+	 * @method setupImages
+	 * @memberof Lightbox
+	 * @description Takes the this.images array and for each image, it generates a carousel image and indicator for the lightbox. Appending each item to the html variable. Once the loop has completed we update the class parameter this.html to reflect the functions local html variable.
+	 * @author Nathan Leadill
+	 */
+	setupImages () {
+		const images = this.images;
+		let html  = $.parseHTML(this.html);
+		let count = 0;
+		images.forEach((image) => {
+			const indicator = count == 0  ? 'active' : '';
+			$('.carousel-indicators', html).append('<li data-target="#myCarousel" data-slide-to="' + count + '" class="' + indicator + '"></li>');
+			const classes = count == 0 ? 'item active' : 'item';
+			const inner = image.indexOf('.mp4') != -1 ? '<video src="' + image + '" controls></video>' : '<img src="' + image + '">';
+			$('.carousel-inner', html).append('<div class=" ' + classes + '">' + inner);
+			count++;
+		});
+		this.html = html;
+	}
+	/**
+	 * @method startCycle
+	 * @memberof Lightbox
+	 * @description Starts the cycle for moving the carousel onto the next image
+	 * @author Nathan Leadill
+	 */
+	startCycle () {
+		this.imageCycle = setInterval(function () {
+			$('.carousel').carousel('next');
+		}, this.delay);
+	}
+	/**
 	 * @method getimageCount
 	 * @memberof Lightbox
 	 * @description Returns the number of images
@@ -1379,37 +1400,7 @@ class Lightbox
 	get html () {
 		return this._html;
 	}
-	/**
-	 * @method setupImages
-	 * @memberof Lightbox
-	 * @description Generates the HTML for the carousel
-	 * @author Nathan Leadill
-	 */
-	setupImages () {
-		const images = this.images;
-		let html  = $.parseHTML(this.html);
-		let count = 0;
-		images.forEach((image) => {
-			const indicator = count == 0  ? 'active' : '';
-			$('.carousel-indicators', html).append('<li data-target="#myCarousel" data-slide-to="' + count + '" class="' + indicator + '"></li>');
-			const classes = count == 0 ? 'item active' : 'item';
-			const inner = image.indexOf('.mp4') != -1 ? '<video src="' + image + '" controls></video>' : '<img src="' + image + '">';
-			$('.carousel-inner', html).append('<div class=" ' + classes + '">' + inner);
-			count++;
-		});
-		this.html = html;
-	}
-	/**
-	 * @method startCycle
-	 * @memberof Lightbox
-	 * @description Starts the cycle for moving the carousel onto the next image
-	 * @author Nathan Leadill
-	 */
-	startCycle () {
-		this.imageCycle = setInterval(function () {
-			$('.carousel').carousel('next');
-		}, this.delay);
-	}
+
 	/**
 	 * @method setupImages
 	 * @memberof Lightbox
