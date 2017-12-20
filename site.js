@@ -147,6 +147,13 @@ class Pikcells
 	 * @description Sets the isMobile property by using the navigator.userAgent property from the browser and performing a string match operation on the value.
 	 * @summary Sets the isMobile depending on a regex check on the navigator.userAgent variable
 	 * @author Nathan Leadill
+	 *
+	 * @playground
+	 * let UA = navigator.userAgent;
+	 * if(UA.match(/Android/) || UA.match(/iPhone/) || UA.match(/BlackBerry/) || UA.match(/iPod/) || UA.match(/Windows Phone/) || UA.match(/webOS/)) {
+	 * 	console.log('You are on mobile');
+	 * }
+	 *
 	 */
 	loadUserAgent () {
 		let UA = navigator.userAgent;
@@ -558,7 +565,7 @@ class Studio
 	/**
 	 * @method scrollToSection
 	 * @memberof Studio
-	 * @description Scrolls the page to the respective question
+	 * @description Scrolls the page to the respective section
 	 * @author Nathan Leadill
 	 * @param {String} target 'data-name' of the section we wish to scroll the page to
 	 */
@@ -580,7 +587,7 @@ class Studio
 	/**
 	 * @method clientsGrid
 	 * @memberof Studio
-	 * @description sets up the grid for the clients logos
+	 * @description Creates the isotope DOM grid for the client logos.
 	 * @author Nathan Leadill
 	 */
 	clientsGrid () {
@@ -597,7 +604,7 @@ class Studio
 	/**
 	 * @method imageSwipe
 	 * @memberof Studio
-	 * @description if the device is mobile, and the slider is swiped
+	 * @description Handle mobile swipes on the studio image slider.
 	 * @author Nathan Leadill
 	 */
 	imageSwipe () {
