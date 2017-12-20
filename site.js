@@ -10,7 +10,7 @@ class Pikcells
 	 */
 	constructor() {
 		/** @type {Boolean} */
-		this._isMobile          = false;
+		static this._isMobile          = false;
 		/** @type {Number} */
 		this._homepageWidth     = $(window).width();
 		/** @type {Number} */
