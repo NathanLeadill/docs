@@ -1,9 +1,2 @@
-dir: lib
-
-packageJson: package.json
-
-articles:
-
- 	- Overview: site
-
- 	- Todo App: site2
+files: 
+	- lib/site.js
